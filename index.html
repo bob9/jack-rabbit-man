@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Rabbit Man 🐰</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .rabbit {
+            font-size: 8rem;
+            animation: hop 1.5s infinite ease-in-out;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .rabbit:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+        
+        .stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        
+        .stat-box:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes hop {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(5deg); }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        button {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        button:hover {
+            background: white;
+            color: #667eea;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <h1>JACK RABBIT MAN</h1>
+        <p class="subtitle">Fastest Hopper in the Digital Realm</p>
+        
+        <div class="rabbit" id="rabbit" onclick="hop()">🐰</div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="hops">0</div>
+                <div class="stat-label">Total Hops</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Speed (km/h)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="carrots">42</div>
+                <div class="stat-label">Carrots Eaten</div>
+            </div>
+        </div>
+        
+        <button onclick="unleashPower()">🚀 UNLEASH THE RABBIT</button>
+    </div>
+    
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+        
+        let hopCount = 0;
+        let carrotCount = 42;
+        
+        function hop() {
+            hopCount++;
+            document.getElementById('hops').textContent = hopCount;
+            
+            if (hopCount % 5 === 0) {
+                carrotCount++;
+                document.getElementById('carrots').textContent = carrotCount;
+            }
+        }
+        
+        function unleashPower() {
+            const rabbit = document.getElementById('rabbit');
+            rabbit.style.animation = 'none';
+            
+            // Create rabbit explosion effect
+            for (let i = 0; i < 20; i++) {
+                const flyingRabbit = document.createElement('div');
+                flyingRabbit.textContent = '🐰';
+                flyingRabbit.style.position = 'fixed';
+                flyingRabbit.style.fontSize = '3rem';
+                flyingRabbit.style.left = '50%';
+                flyingRabbit.style.top = '50%';
+                flyingRabbit.style.pointerEvents = 'none';
+                flyingRabbit.style.zIndex = '1000';
+                document.body.appendChild(flyingRabbit);
+                
+                const angle = (Math.PI * 2 * i) / 20;
+                const velocity = 500;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let posX = 0;
+                let posY = 0;
+                let rotation = 0;
+                
+                const animate = () => {
+                    posX += vx / 60;
+                    posY += vy / 60;
+                    rotation += 10;
+                    
+                    flyingRabbit.style.transform = `translate(${posX}px, ${posY}px) rotate(${rotation}deg)`;
+                    flyingRabbit.style.opacity = Math.max(0, 1 - Math.abs(posX) / 500);
+                    
+                    if (Math.abs(posX) < 800 && Math.abs(posY) < 800) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        flyingRabbit.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+            
+            setTimeout(() => {
+                rabbit.style.animation = 'hop 1.5s infinite ease-in-out';
+            }, 100);
+            
+            hopCount += 100;
+            document.getElementById('hops').textContent = hopCount;
+        }
+    </script>
+</body>
+</html>
