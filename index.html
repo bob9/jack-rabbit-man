@@ -143,6 +143,73 @@
             transform: scale(1.1);
         }
         
+        .daily-surprise {
+            background: rgba(255, 255, 255, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.5s ease-out;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .surprise-emoji {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 0.5rem;
+            animation: spin 3s ease-in-out infinite;
+        }
+        
+        .surprise-title {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .surprise-message {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .fun-fact {
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #ffd700;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .fact-label {
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fun-fact p {
+            margin: 0;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
         @media (max-width: 768px) {
             .stats {
                 gap: 0.5rem;
@@ -160,6 +227,19 @@
     
     <div class="container">
         <h1>JACK RABBIT MAN</h1>
+        
+        <!-- DAILY_SURPRISE_START -->
+        <div class="daily-surprise">
+            <div class="surprise-emoji">🌸</div>
+            <h2 class="surprise-title">Flower Power Rabbit!</h2>
+            <p class="surprise-message">Rabbits have 28 teeth and they love to chew on things!</p>
+            <div class="fun-fact">
+                <span class="fact-label">🎯 Fun Fact:</span>
+                <p>Rabbits can see behind themselves without turning their heads!</p>
+            </div>
+        </div>
+        <!-- DAILY_SURPRISE_END -->
+        
         <p class="subtitle">Fastest Hopper in the Digital Realm</p>
         
         <div class="rabbit" id="rabbit" onclick="hop()">🐰</div>
